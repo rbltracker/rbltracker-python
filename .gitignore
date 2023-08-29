@@ -1,3 +1,7 @@
-node_modules
 .svn
 test.py
+build
+dist
+MANIFEST.in
+rbltracker.egg-info
+*.pyc

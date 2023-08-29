@@ -17,7 +17,7 @@ except ImportError:
 
 setup(
     name='rbltracker',
-    version='1.0.0',
+    version='1.1.0',
     description='A Python wrapper for the RBLTracker API',
     author='Mike Pultz',
     author_email='mike@mikepultz.com',

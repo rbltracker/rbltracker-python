@@ -12,6 +12,8 @@ import re
 from .exception.exception import RBLTrackerException
 from .api.requesthandler import RequestHandler
 
+from .api.acls import ACLs
+
 from .api.check import Check
 
 from .api.listings import Listings
@@ -31,6 +33,9 @@ from .api.rbls import RBLs
 from .api.rbl_profile import RBLProfile
 from .api.rbl_profiles import RBLProfiles
 
+from .api.monitoring_profile import MonitoringProfile
+from .api.monitoring_profiles import MonitoringProfiles
+
 class Client(object):
 
     def __init__(self, _account_sid, _api_token):
@@ -38,7 +43,7 @@ class Client(object):
         #
         # Python library version
         #
-        self.version = '1.0.0'
+        self.version = '1.1.0'
 
         #
         # validate account SID
@@ -60,10 +65,15 @@ class Client(object):
         # the default API settings
         #
         self.options = {
-            'url': 'https://rbltracker.com/api/'
+            'url': 'https://api.rbltracker.com/3.0/'
         }
 
         self.request = RequestHandler(self.account_sid, self.api_token, self.options);
+
+        #
+        # acls
+        #
+        self.acls = ACLs(self.request)
 
         #
         # manual check
@@ -104,3 +114,9 @@ class Client(object):
         #
         self.rbl_profile = RBLProfile(self.request)
         self.rbl_profiles = RBLProfiles(self.request)
+
+        #
+        # Monitoring profiles
+        #
+        self.monitoring_profile = MonitoringProfile(self.request)
+        self.monitoring_profiles = MonitoringProfiles(self.request)
